@@ -15,7 +15,10 @@ defmodule TypeID.MixProject do
       name: "TypeID Elixir",
       source_url: "https://github.com/sloanelybutsurely/typeid-elixir",
       docs: docs(),
-      consolidate_protocols: Mix.env() != :test
+      consolidate_protocols: Mix.env() != :test,
+      dialyzer: [
+        flags: [:no_opaque, :unmatched_returns, :error_handling, :unknown]
+      ]
     ]
   end
 
@@ -48,7 +51,10 @@ defmodule TypeID.MixProject do
       {:phoenix, "~> 1.7", optional: true},
       {:jason, "~> 1.4", optional: true},
       {:ex_doc, "~> 0.27", only: :dev, runtime: false},
-      {:yaml_elixir, "~> 2.9", only: [:dev, :test], runtime: false}
+      {:yaml_elixir, "~> 2.9", only: [:dev, :test], runtime: false},
+      {:credo, "~> 1.7", only: [:dev, :test], runtime: false},
+      {:sobelow, "~> 0.13", only: [:dev, :test], runtime: false},
+      {:dialyxir, "~> 1.4", only: [:dev, :test], runtime: false}
     ]
   end
 end

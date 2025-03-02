@@ -58,6 +58,7 @@ defmodule TypeID.Base32 do
 
   defp do_decode(char), do: bad_character!(char)
 
+  @spec bad_character!(byte()) :: no_return()
   defp bad_character!(byte) do
     raise ArgumentError,
           "non-alphabet character found: #{inspect(<<byte>>, binaries: :as_strings)} (byte #{byte})"

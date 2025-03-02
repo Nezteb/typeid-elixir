@@ -154,7 +154,7 @@ defmodule TypeID do
   end
 
   @doc """
-  Parses a `t:t/0` from a prefix and suffix. 
+  Parses a `t:t/0` from a prefix and suffix.
 
   ### Example
 
@@ -282,12 +282,13 @@ defmodule TypeID do
     end
   end
 
+  @spec invalid_prefix!(String.t(), String.t()) :: no_return()
   defp invalid_prefix!(prefix, message) do
     raise ArgumentError, "invalid prefix: #{prefix}. #{message}"
   end
 
   defp validate_suffix!(suffix) do
-    Base32.decode!(suffix)
+    _ = Base32.decode!(suffix)
 
     :ok
   end
